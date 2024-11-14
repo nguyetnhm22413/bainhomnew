@@ -12,6 +12,7 @@ from sklearn.decomposition import PCA
 import joblib
 import streamlit as st
 import requests
+from io import StringIO
 
 sheet_id = '1L8HOtCvDeGdtLOmWPKrF-5YtkR1ubX-4lnMcaoPZQdU'
 sheet_name = 'Preprocessing data Export'
