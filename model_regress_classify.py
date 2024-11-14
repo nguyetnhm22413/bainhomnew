@@ -12,8 +12,14 @@ from sklearn.decomposition import PCA
 import joblib
 import streamlit as st
 
-# Giả sử df_copy và target1 đã được xác định
-
+df_copy=df[['type',"days_for_shipment_scheduled","delivery_status","late_delivery_risk","category_id",
+            "customer_city","customer_country","customer_segment","customer_state","latitude","longitude","order_country","order_city",
+            "order_item_product_price","order_item_quantity","order_status","product_card_id","product_price",
+            "shipping_date_dateorders","shipping_mode","late_days","order_date_dateorders","order_region","market"]]
+target1 = 'late_delivery_risk'
+if target1 not in df_1.columns:
+    raise ValueError(f"The target variable '{target1}' is not present in the dataset.")
+    
 X = df_copy.drop(target1, axis=1)
 y = df_copy[target1]
 
