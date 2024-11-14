@@ -12,6 +12,22 @@ from sklearn.decomposition import PCA
 import joblib
 import streamlit as st
 
+sheet_id = '1L8HOtCvDeGdtLOmWPKrF-5YtkR1ubX-4lnMcaoPZQdU'
+sheet_name = 'Preprocessing data Export'
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    df = pd.read_csv(StringIO(response.text))
+    st.write(df)
+else:
+    st.write("Lỗi khi tải dữ liệu")
+
 df_copy=df[['type',"days_for_shipment_scheduled","delivery_status","late_delivery_risk","category_id",
             "customer_city","customer_country","customer_segment","customer_state","latitude","longitude","order_country","order_city",
             "order_item_product_price","order_item_quantity","order_status","product_card_id","product_price",
