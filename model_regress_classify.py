@@ -31,3 +31,14 @@ if st.button("Predict"):
     # Hiển thị dự đoán
     st.subheader("Prediction Result")
     st.write(f"Prediction: {prediction[0]}")
+
+import os
+
+# Path to the saved model
+model_path = 'best_model.pkl'
+
+if os.path.exists(model_path):
+    rf_model_loaded = joblib.load(model_path)
+    st.write("Model loaded successfully!")
+else:
+    st.write("Error: Model file not found.")
